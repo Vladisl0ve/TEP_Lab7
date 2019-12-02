@@ -27,6 +27,17 @@ public:
 	}//~CMySmartPointer()
 	T& operator*() { return(*pc_pointer); }
 	T* operator->() { return(pc_pointer); }
+	void operator=(const CMySmartPointer& tmp)
+	{
+		if (pc_counter->iDec() == 0)
+		{
+			delete pc_pointer;
+			delete pc_counter;
+		}
+		pc_counter = tmp.pc_counter;
+		pc_pointer = tmp.pc_pointer;
+		pc_counter->iAdd();
+	}
 private:
 	CRefCounter* pc_counter;
 	T* pc_pointer;
