@@ -1,5 +1,7 @@
 #pragma once
+#include <iostream>
 #include "CRefCounter.h"
+using namespace std;
 
 template <typename T>
 class CMySmartPointer
@@ -38,6 +40,13 @@ public:
 		pc_pointer = tmp.pc_pointer;
 		pc_counter->iAdd();
 	}
+	void vShowGlobalStatus() {
+		cout << this->pc_counter->iGetCounterNow() << " : " << pc_counter->iGet() << endl;
+	}
+	void vShowCurrentStatus() {
+		cout << this->pc_counter->iGet() << endl;
+	}
+
 private:
 	CRefCounter* pc_counter;
 	T* pc_pointer;

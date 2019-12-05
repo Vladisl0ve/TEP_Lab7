@@ -10,7 +10,10 @@ int main()
 
 	tmp_ptr = ptr_test;
 	*ptr_test = 4;
+	tmp_ptr = CMySmartPointer<int>(new int(99));
 
 	cout << *new_ptr_test << " " << *tmp_ptr << endl;
+	ptr_test.vShowGlobalStatus();
+	ptr_test.vShowCurrentStatus();
 	return 0;
 }
